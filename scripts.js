@@ -1,3 +1,26 @@
+class Table {
+  constructor(x, y, size) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.cellSize = this.size / 9;
+  }
+
+  draw() {
+    fill("brown");
+    stroke(250);
+    strokeWeight(3);
+    rect(this.x, this.y, this.size, this.size);
+
+    for (let i = 1; i < 9; i++) {
+      let x = this.x + i * this.cellSize;
+      let y = this.y + i * this.cellSize;
+      line(x, this.y, x, this.y + this.size);
+      line(this.x, y, this.x + this.size, y);
+    }
+  }
+}
+
 class Input {
   constructor(defaultValue, x, y, width) {
     this.input = createInput(defaultValue);
@@ -36,6 +59,7 @@ class Reset {
 }
 
 const restart = new Reset(10, 60, "red", "Reset");
+const table = new Table(130, 20, 400);
 
 function clickHandler() {
   restart.onClick();
@@ -43,10 +67,11 @@ function clickHandler() {
 function draw() {
   if (restart) {
     restart.draw();
+    table.draw();
   }
 }
 function setup() {
-  let cnv = createCanvas(500, 500);
+  let cnv = createCanvas(600, 600);
   cnv.mouseClicked(clickHandler);
 
   let player1Input = new Input("Player1", 0, 0, 100);
