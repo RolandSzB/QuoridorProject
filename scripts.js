@@ -19,6 +19,15 @@ class Table {
       line(this.x, y, this.x + this.size, y);
     }
   }
+  onClick() {
+    if (
+      mouseX > this.x &&
+      mouseX < this.x + this.cellSize &&
+      mouseY > this.y &&
+      mouseY < this.y + this.cellSize
+    )
+      console.log("Aici");
+  }
 }
 
 class Input {
@@ -63,6 +72,7 @@ const table = new Table(130, 20, 400);
 
 function clickHandler() {
   restart.onClick();
+  table.onClick();
 }
 function draw() {
   if (restart) {
