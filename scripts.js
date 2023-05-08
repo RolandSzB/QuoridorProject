@@ -1,3 +1,11 @@
+class Input {
+  constructor(defaultValue, x, y, width) {
+    this.input = createInput(defaultValue);
+    this.input.position(x, y);
+    this.input.size(width);
+  }
+}
+
 class Reset {
   #color;
   #x;
@@ -27,7 +35,7 @@ class Reset {
   }
 }
 
-const restart = new Reset(50, 50, "red", "Reset");
+const restart = new Reset(10, 60, "red", "Reset");
 
 function clickHandler() {
   restart.onClick();
@@ -40,4 +48,7 @@ function draw() {
 function setup() {
   let cnv = createCanvas(500, 500);
   cnv.mouseClicked(clickHandler);
+
+  let player1Input = new Input("Player1", 0, 0, 100);
+  let player2Input = new Input("Player2", 0, 30, 100);
 }
