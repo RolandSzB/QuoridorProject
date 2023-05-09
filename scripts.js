@@ -1,32 +1,25 @@
-class Table {
-  constructor(x, y, size) {
+class Cell {
+  constructor(x, y, size, color) {
     this.x = x;
     this.y = y;
     this.size = size;
-    this.cellSize = this.size / 9;
+    this.color = color;
   }
 
   draw() {
-    fill("brown");
-    stroke(250);
-    strokeWeight(3);
+    fill(this.color);
     rect(this.x, this.y, this.size, this.size);
-
-    for (let i = 1; i < 9; i++) {
-      let x = this.x + i * this.cellSize;
-      let y = this.y + i * this.cellSize;
-      line(x, this.y, x, this.y + this.size);
-      line(this.x, y, this.x + this.size, y);
-    }
   }
+
   onClick() {
-    if (
-      mouseX > this.x &&
-      mouseX < this.x + this.cellSize &&
-      mouseY > this.y &&
-      mouseY < this.y + this.cellSize
-    )
-      console.log("Aici");
+    let x1 = this.x;
+    let y1 = this.y;
+    let x2 = x1 + this.size;
+    let y2 = y1 + this.size;
+
+    if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+      this.color = "black";
+    }
   }
 }
 
@@ -63,26 +56,48 @@ class Reset {
       mouseY > this.#y &&
       mouseY < this.#y + 30
     )
-      if (this.#text == "Reset") console.log("Aici");
+      if (this.#text == "Reset") {
+        for (let i = 0; i < matrix.length; i++) {
+          matrix[i].color = "brown";
+        }
+      }
   }
 }
 
+const cellSize = 40;
+const cellSpacing = 3;
+const startX = 120;
+const startY = 40;
+const matrix = [];
+
 const restart = new Reset(10, 60, "red", "Reset");
-const table = new Table(130, 20, 400);
 
 function clickHandler() {
   restart.onClick();
-  table.onClick();
+  for (let i = 0; i < matrix.length; i++) {
+    matrix[i].onClick();
+  }
 }
 function draw() {
   if (restart) {
     restart.draw();
-    table.draw();
+    for (let i = 0; i < matrix.length; i++) {
+      matrix[i].draw();
+    }
   }
 }
+
 function setup() {
   let cnv = createCanvas(600, 600);
   cnv.mouseClicked(clickHandler);
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const cellX = startX + i * (cellSize + cellSpacing);
+      const cellY = startY + j * (cellSize + cellSpacing);
+      matrix.push(new Cell(cellX, cellY, cellSize, "brown"));
+    }
+  }
 
   let player1Input = new Input("Player1", 0, 0, 100);
   let player2Input = new Input("Player2", 0, 30, 100);
