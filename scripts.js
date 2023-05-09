@@ -99,6 +99,6 @@ function setup() {
     }
   }
 
-  let player1Input = new Input("Player1", 0, 0, 100);
-  let player2Input = new Input("Player2", 0, 30, 100);
+  let player1Input = new Input("Player1", 0, 10, 100);
+  let player2Input = new Input("Player2", 0, 35, 100);
 }
