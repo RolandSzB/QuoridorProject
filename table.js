@@ -5,7 +5,7 @@ class Cell {
     this.y = y;
     this.size = size;
     this.color = color;
-    this.pawn = 1;
+    this.hasWall = false;
   }
 
   draw() {
@@ -22,8 +22,6 @@ class Cell {
     if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
       if (clickNumber % 2 == 0) {
         this.color = "blue";
-        console.log(x1, y1);
-        console.log(clickNumber);
         clickNumber++;
       } else {
         this.color = "green";

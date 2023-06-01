@@ -1,5 +1,5 @@
 const cellSize = 40;
-const cellSpacing = 3;
+const cellSpacing = 8;
 const startX = 120;
 const startY = 40;
 const matrix = [];
@@ -22,7 +22,7 @@ function draw() {
   fill("blue");
   text(`Player 1: ${player1Input.value()} `, 350, 25);
   fill("green");
-  text(`Player 2: ${player2Input.value()} `, 350, 450);
+  text(`Player 2: ${player2Input.value()} `, 350, 500);
 }
 
 let player1Input;
