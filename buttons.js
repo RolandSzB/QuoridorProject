@@ -1,11 +1,3 @@
-class Input {
-  constructor(defaultValue, x, y, width) {
-    this.input = createInput(defaultValue);
-    this.input.position(x, y);
-    this.input.size(width);
-  }
-}
-
 class Reset {
   #color;
   #x;
