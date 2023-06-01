@@ -19,7 +19,9 @@ function draw() {
       matrix[i].draw();
     }
   }
+  fill("blue");
   text(`Player 1: ${player1Input.value()} `, 350, 25);
+  fill("green");
   text(`Player 2: ${player2Input.value()} `, 350, 450);
 }
 
