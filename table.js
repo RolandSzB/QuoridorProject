@@ -1,9 +1,11 @@
+let clickNumber = 0;
 class Cell {
   constructor(x, y, size, color) {
     this.x = x;
     this.y = y;
     this.size = size;
     this.color = color;
+    this.pawn = 1;
   }
 
   draw() {
@@ -18,7 +20,16 @@ class Cell {
     let y2 = y1 + this.size;
 
     if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
-      this.color = "black";
+      if (clickNumber % 2 == 0) {
+        this.color = "blue";
+        console.log(x1, y1);
+        console.log(clickNumber);
+        clickNumber++;
+      } else {
+        this.color = "green";
+        console.log("plang");
+        clickNumber++;
+      }
     }
   }
 }
