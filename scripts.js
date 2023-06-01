@@ -19,7 +19,12 @@ function draw() {
       matrix[i].draw();
     }
   }
+  text(`Player 1: ${player1Input.value()} `, 350, 25);
+  text(`Player 2: ${player2Input.value()} `, 350, 450);
 }
+
+let player1Input;
+let player2Input;
 
 function setup() {
   let cnv = createCanvas(600, 600);
@@ -33,6 +38,16 @@ function setup() {
     }
   }
 
-  let player1Input = new Input("Player1", 0, 10, 100);
-  let player2Input = new Input("Player2", 0, 35, 100);
+  player1Input = createInput();
+  player1Input.position(5, 10);
+  player1Input.input(updatePlayer1Input);
+  player1Input.size(110);
+
+  player2Input = createInput();
+  player2Input.position(5, 35);
+  player2Input.input(updatePlayer2Input);
+  player2Input.size(110);
 }
+function updatePlayer1Input() {}
+
+function updatePlayer2Input() {}
