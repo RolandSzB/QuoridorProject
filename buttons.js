@@ -26,6 +26,7 @@ class Reset {
       if (this.#text == "Reset") {
         for (let i = 0; i < matrix.length; i++) {
           matrix[i].color = "brown";
+          matrix[i].hasWall = false;
           player1Input.value("");
           player2Input.value("");
         }

@@ -12,6 +12,15 @@ class Cell {
   draw() {
     fill(this.color);
     rect(this.x, this.y, this.size, this.size);
+    if (this.hasWall) {
+      fill("gray");
+      rect(
+        this.x + this.size,
+        this.y + this.size / 2 - cellSpacing * 2,
+        cellSpacing,
+        cellSize * 2
+      );
+    }
   }
 
   onClick() {
@@ -29,9 +38,6 @@ class Cell {
     ) {
       if (clickNumber % 2 == 0) {
         this.color = "blue";
-        console.log(x1, y1);
-
-        // Set other cells with the same color to brown
         for (let i = 0; i < matrix.length; i++) {
           if (matrix[i] !== this && matrix[i].color === "blue") {
             matrix[i].color = "brown";
@@ -41,8 +47,6 @@ class Cell {
         clickNumber++;
       } else {
         this.color = "green";
-
-        // Set other cells with the same color to brown
         for (let i = 0; i < matrix.length; i++) {
           if (matrix[i] !== this && matrix[i].color === "green") {
             matrix[i].color = "brown";
@@ -51,6 +55,14 @@ class Cell {
 
         clickNumber++;
       }
+    } else if (
+      mouseX > x1 + this.size &&
+      mouseX < x1 + 2 * this.size &&
+      mouseY > y1 &&
+      mouseY < y2 &&
+      this.color == "brown"
+    ) {
+      this.hasWall = true;
     }
   }
 }
