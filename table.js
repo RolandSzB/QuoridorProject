@@ -5,7 +5,8 @@ class Cell {
     this.y = y;
     this.size = size;
     this.color = color;
-    this.hasWall = false;
+    this.hasVerticalWall = false;
+    this.hasHorizntalWall = false;
     this.hasPawn = 0;
   }
 
