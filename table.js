@@ -18,7 +18,7 @@ class Cell {
         this.x + this.size,
         this.y + this.size / 2 - cellSpacing * 2 - 4,
         cellSpacing,
-        cellSize
+        cellSize + cellSpacing
       );
     }
 
@@ -27,7 +27,7 @@ class Cell {
       rect(
         this.x + this.size / 2 - cellSpacing * 2 - 4,
         this.y + this.size,
-        cellSize,
+        cellSize + cellSpacing,
         cellSpacing
       );
     }
@@ -66,21 +66,35 @@ class Cell {
         clickNumber++;
       }
     } else if (
-      mouseX > x1 + this.size &&
-      mouseX < x1 + 2 * this.size &&
-      mouseY > y1 &&
-      mouseY < y2 &&
-      this.color == "brown"
-    ) {
-      this.hasVerticalWall = true;
-    } else if (
       mouseX > x1 &&
       mouseX < x2 &&
       mouseY > y1 + this.size &&
       mouseY < y1 + 2 * this.size &&
       this.color == "brown"
     ) {
-      this.hasHorizontalWall = true;
+      let nextCell = matrix.find(
+        (cell) =>
+          cell.x === this.x + this.size + cellSpacing && cell.y === this.y
+      );
+      if (nextCell && nextCell.color === "brown") {
+        this.hasHorizontalWall = true;
+        nextCell.hasHorizontalWall = true;
+      }
+    } else if (
+      mouseX > x1 + this.size &&
+      mouseX < x1 + 2 * this.size &&
+      mouseY > y1 &&
+      mouseY < y2 &&
+      this.color == "brown"
+    ) {
+      let nextCell = matrix.find(
+        (cell) =>
+          cell.x === this.x && cell.y === this.y + this.size + cellSpacing
+      );
+      if (nextCell && nextCell.color === "brown") {
+        this.hasVerticalWall = true;
+        nextCell.hasVerticalWall = true;
+      }
     }
   }
 }
