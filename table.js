@@ -12,13 +12,23 @@ class Cell {
   draw() {
     fill(this.color);
     rect(this.x, this.y, this.size, this.size);
-    if (this.hasWall) {
+    if (this.hasVerticalWall) {
       fill("gray");
       rect(
         this.x + this.size,
-        this.y + this.size / 2 - cellSpacing * 2,
+        this.y + this.size / 2 - cellSpacing * 2 - 4,
         cellSpacing,
-        cellSize * 2
+        cellSize
+      );
+    }
+
+    if (this.hasHorizontalWall) {
+      fill("gray");
+      rect(
+        this.x + this.size / 2 - cellSpacing * 2 - 4,
+        this.y + this.size,
+        cellSize,
+        cellSpacing
       );
     }
   }
@@ -62,7 +72,15 @@ class Cell {
       mouseY < y2 &&
       this.color == "brown"
     ) {
-      this.hasWall = true;
+      this.hasVerticalWall = true;
+    } else if (
+      mouseX > x1 &&
+      mouseX < x2 &&
+      mouseY > y1 + this.size &&
+      mouseY < y1 + 2 * this.size &&
+      this.color == "brown"
+    ) {
+      this.hasHorizontalWall = true;
     }
   }
 }
