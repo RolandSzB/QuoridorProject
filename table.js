@@ -69,9 +69,8 @@ class Cell {
     } else if (
       mouseX > x1 &&
       mouseX < x2 &&
-      mouseY > y1 + this.size &&
-      mouseY < y1 + 2 * this.size &&
-      this.color == "brown"
+      mouseY > y2 &&
+      mouseY < y2 + cellSpacing
     ) {
       let nextCell = matrix.find(
         (cell) =>
@@ -82,11 +81,10 @@ class Cell {
         nextCell.hasHorizontalWall = true;
       }
     } else if (
-      mouseX > x1 + this.size &&
-      mouseX < x1 + 2 * this.size &&
+      mouseX > x2 &&
+      mouseX < x2 + cellSpacing &&
       mouseY > y1 &&
-      mouseY < y2 &&
-      this.color == "brown"
+      mouseY < y2
     ) {
       let nextCell = matrix.find(
         (cell) =>
