@@ -43,32 +43,6 @@ class Cell {
     if (
       mouseX > x1 &&
       mouseX < x2 &&
-      mouseY > y1 &&
-      mouseY < y2 &&
-      this.color == "brown"
-    ) {
-      if (clickNumber % 2 == 0) {
-        this.color = "blue";
-        for (let i = 0; i < matrix.length; i++) {
-          if (matrix[i] !== this && matrix[i].color === "blue") {
-            matrix[i].color = "brown";
-          }
-        }
-
-        clickNumber++;
-      } else {
-        this.color = "green";
-        for (let i = 0; i < matrix.length; i++) {
-          if (matrix[i] !== this && matrix[i].color === "green") {
-            matrix[i].color = "brown";
-          }
-        }
-
-        clickNumber++;
-      }
-    } else if (
-      mouseX > x1 &&
-      mouseX < x2 &&
       mouseY > y2 &&
       mouseY < y2 + cellSpacing
     ) {
@@ -95,5 +69,14 @@ class Cell {
         nextCell.hasVerticalWall = true;
       }
     }
+  }
+}
+
+class Player {
+  constructor(positionX, positionY, size, color) {
+    this.positionX = positionX;
+    this.positionY = positionY;
+    this.size = size;
+    this.color = color;
   }
 }
