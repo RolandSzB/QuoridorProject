@@ -2,24 +2,22 @@ const cellSize = 40;
 const cellSpacing = 8;
 const startX = 120;
 const startY = 40;
-const player1X = 332;
-const player1Y = 60;
-const player2X = 332;
-const player2Y = 444;
+var player1X = 332;
+var player1Y = 60;
+var player2X = 332;
+var player2Y = 444;
 
 const matrix = [];
+var player1 = [];
+var player2 = [];
 
 const restart = new Reset(10, 60, "red", "Reset");
-var player1 = new Player(player1X, player1Y, 30, "blue");
-var player2 = new Player(player2X, player2Y, 30, "green");
 
 function clickHandler() {
   restart.onClick();
   for (let i = 0; i < matrix.length; i++) {
     matrix[i].onClick();
   }
-  player1.onClick();
-  player2.onClick();
 }
 function draw() {
   if (restart) {
@@ -28,9 +26,10 @@ function draw() {
     for (let i = 0; i < matrix.length; i++) {
       matrix[i].draw();
     }
+    player1[0].draw();
+    player2[0].draw();
   }
-  player1.draw();
-  player2.draw();
+
   fill("blue");
   text(`Player 1: ${player1Input.value()} `, 350, 25);
   fill("green");
@@ -43,6 +42,9 @@ let player2Input;
 function setup() {
   let cnv = createCanvas(600, 600);
   cnv.mouseClicked(clickHandler);
+
+  player1.push(new Player(player1X, player1Y, 30, "blue"));
+  player2.push(new Player(player2X, player2Y, 30, "green"));
 
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {

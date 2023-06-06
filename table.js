@@ -53,6 +53,12 @@ class Cell {
     let x2 = x1 + this.size;
     let y2 = y1 + this.size;
 
+    if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+      player1X = x1 + cellSize / 2;
+      player1Y = y1 + cellSize / 2;
+      player1[0].draw();
+    }
+
     if (
       mouseX > x1 &&
       mouseX < x2 &&
