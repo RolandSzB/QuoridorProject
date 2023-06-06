@@ -2,11 +2,16 @@ const cellSize = 40;
 const cellSpacing = 8;
 const startX = 120;
 const startY = 40;
+const player1X = 332;
+const player1Y = 60;
+const player2X = 332;
+const player2Y = 444;
+
 const matrix = [];
 
 const restart = new Reset(10, 60, "red", "Reset");
-var player1 = new Player(332, 60, 30, "blue");
-var player2 = new Player(332, 444, 30, "green");
+var player1 = new Player(player1X, player1Y, 30, "blue");
+var player2 = new Player(player2X, player2Y, 30, "green");
 
 function clickHandler() {
   restart.onClick();
