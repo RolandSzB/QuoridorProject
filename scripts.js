@@ -5,20 +5,27 @@ const startY = 40;
 const matrix = [];
 
 const restart = new Reset(10, 60, "red", "Reset");
+var player1 = new Player(332, 60, 30, "blue");
+var player2 = new Player(332, 444, 30, "green");
 
 function clickHandler() {
   restart.onClick();
   for (let i = 0; i < matrix.length; i++) {
     matrix[i].onClick();
   }
+  player1.onClick();
+  player2.onClick();
 }
 function draw() {
   if (restart) {
     restart.draw();
+
     for (let i = 0; i < matrix.length; i++) {
       matrix[i].draw();
     }
   }
+  player1.draw();
+  player2.draw();
   fill("blue");
   text(`Player 1: ${player1Input.value()} `, 350, 25);
   fill("green");

@@ -1,3 +1,16 @@
+class Player {
+  constructor(positionX, positionY, size, color) {
+    this.positionX = positionX;
+    this.positionY = positionY;
+    this.size = size;
+    this.color = color;
+  }
+  draw() {
+    fill(this.color);
+    circle(this.positionX, this.positionY, this.size);
+  }
+}
+
 let clickNumber = 0;
 class Cell {
   constructor(x, y, size, color) {
@@ -69,14 +82,5 @@ class Cell {
         nextCell.hasVerticalWall = true;
       }
     }
-  }
-}
-
-class Player {
-  constructor(positionX, positionY, size, color) {
-    this.positionX = positionX;
-    this.positionY = positionY;
-    this.size = size;
-    this.color = color;
   }
 }
