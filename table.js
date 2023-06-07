@@ -54,9 +54,23 @@ class Cell {
     let y2 = y1 + this.size;
 
     if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
-      player1X = x1 + cellSize / 2;
-      player1Y = y1 + cellSize / 2;
-      player1[0].draw();
+      {
+        player1X = x1 + this.size / 2;
+        player1Y = y1 + this.size / 2;
+
+        if (clickNumber % 2 === 0) {
+          player1[0].positionX = player1X;
+          player1[0].positionY = player1Y;
+          fill("green");
+          text(`Player 2 turn `, 10, 100);
+        } else {
+          player2[0].positionX = player1X;
+          player2[0].positionY = player1Y;
+          fill("blue");
+          text(`Player 1 turn `, 10, 100);
+        }
+      }
+      clickNumber++;
     }
 
     if (

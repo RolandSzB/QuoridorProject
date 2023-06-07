@@ -25,7 +25,10 @@ class Reset {
     )
       if (this.#text == "Reset") {
         for (let i = 0; i < matrix.length; i++) {
-          matrix[i].color = "brown";
+          player1[0].positionX = 332;
+          player1[0].positionY = 60;
+          player2[0].positionX = 332;
+          player2[0].positionY = 444;
           matrix[i].hasVerticalWall = false;
           matrix[i].hasHorizontalWall = false;
           player1Input.value("");
