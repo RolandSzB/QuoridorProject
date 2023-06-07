@@ -60,7 +60,13 @@ class Cell {
     let x2 = x1 + this.size;
     let y2 = y1 + this.size;
 
-    if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+    if (
+      mouseX > x1 &&
+      mouseX < x2 &&
+      mouseY > y1 &&
+      mouseY < y2 &&
+      clickNumber % 2 == 0
+    ) {
       var distanceX = Math.abs(player1[0].positionX - (x1 + cellSize / 2));
       var distanceY = Math.abs(player1[0].positionY - (y1 + cellSize / 2));
       if (
@@ -68,10 +74,27 @@ class Cell {
         (distanceX === 0 && distanceY === cellSize + cellSpacing)
       ) {
         player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+        clickNumber++;
       }
-
-      clickNumber++;
     }
+    if (
+      mouseX > x1 &&
+      mouseX < x2 &&
+      mouseY > y1 &&
+      mouseY < y2 &&
+      clickNumber % 2 != 0
+    ) {
+      var distanceX = Math.abs(player2[0].positionX - (x1 + cellSize / 2));
+      var distanceY = Math.abs(player2[0].positionY - (y1 + cellSize / 2));
+      if (
+        (distanceX === cellSize + cellSpacing && distanceY === 0) ||
+        (distanceX === 0 && distanceY === cellSize + cellSpacing)
+      ) {
+        player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+        clickNumber++;
+      }
+    }
+
     if (
       mouseX > x1 &&
       mouseX < x2 &&
