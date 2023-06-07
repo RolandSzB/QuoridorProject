@@ -17,6 +17,7 @@ class Player {
   }
 }
 
+let currentPlayer = 1;
 let clickNumber = 0;
 
 class Cell {
@@ -75,6 +76,8 @@ class Cell {
       ) {
         player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
         clickNumber++;
+        currentPlayer = 2;
+        displayTurn();
       }
     }
     if (
@@ -92,6 +95,8 @@ class Cell {
       ) {
         player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
         clickNumber++;
+        currentPlayer = 1;
+        displayTurn();
       }
     }
 
@@ -124,5 +129,14 @@ class Cell {
         nextCell.hasVerticalWall = true;
       }
     }
+  }
+}
+function displayTurn() {
+  if (currentPlayer === 1) {
+    fill("blue");
+    text("Player 1's Turn", 10, 250);
+  } else {
+    fill("green");
+    text("Player 2's Turn", 10, 250);
   }
 }

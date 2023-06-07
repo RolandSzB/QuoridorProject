@@ -54,6 +54,7 @@ function setup() {
     }
   }
 
+  //displayTurn();
   player1Input = createInput();
   player1Input.position(5, 10);
   player1Input.input(updatePlayer1Input);
