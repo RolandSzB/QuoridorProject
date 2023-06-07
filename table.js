@@ -5,13 +5,20 @@ class Player {
     this.size = size;
     this.color = color;
   }
+
   draw() {
     fill(this.color);
     circle(this.positionX, this.positionY, this.size);
   }
+
+  move(x, y) {
+    this.positionX = x;
+    this.positionY = y;
+  }
 }
 
 let clickNumber = 0;
+
 class Cell {
   constructor(x, y, size, color) {
     this.x = x;
@@ -19,7 +26,7 @@ class Cell {
     this.size = size;
     this.color = color;
     this.hasVerticalWall = false;
-    this.hasHorizntalWall = false;
+    this.hasHorizontalWall = false;
     this.hasPawn = 0;
   }
 
@@ -54,21 +61,10 @@ class Cell {
     let y2 = y1 + this.size;
 
     if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
-      {
-        player1X = x1 + this.size / 2;
-        player1Y = y1 + this.size / 2;
-
-        if (clickNumber % 2 === 0) {
-          player1[0].positionX = player1X;
-          player1[0].positionY = player1Y;
-          fill("green");
-          text(`Player 2 turn `, 10, 100);
-        } else {
-          player2[0].positionX = player1X;
-          player2[0].positionY = player1Y;
-          fill("blue");
-          text(`Player 1 turn `, 10, 100);
-        }
+      if (clickNumber % 2 === 0) {
+        player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+      } else {
+        player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
       }
       clickNumber++;
     }
