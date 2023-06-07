@@ -69,16 +69,6 @@ class Cell {
       ) {
         player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
       }
-      if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
-        var distancesX = Math.abs(player2[0].positionX - (x1 + cellSize / 2));
-        var distancesY = Math.abs(player2[0].positionX - (y1 + cellSize / 2));
-        if (
-          (distancesX === cellSize + cellSpacing && distanceY === 0) ||
-          (distancesX === 0 && distancesY === cellSize + cellSpacing)
-        ) {
-          player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
-        }
-      }
 
       clickNumber++;
     }
