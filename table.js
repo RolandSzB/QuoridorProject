@@ -83,7 +83,7 @@ class Cell {
         (cell) =>
           cell.x === this.x + this.size + cellSpacing && cell.y === this.y
       );
-      if (nextCell && nextCell.color === "brown") {
+      if (nextCell) {
         this.hasHorizontalWall = true;
         nextCell.hasHorizontalWall = true;
       }
@@ -97,7 +97,7 @@ class Cell {
         (cell) =>
           cell.x === this.x && cell.y === this.y + this.size + cellSpacing
       );
-      if (nextCell && nextCell.color === "brown") {
+      if (nextCell) {
         this.hasVerticalWall = true;
         nextCell.hasVerticalWall = true;
       }
