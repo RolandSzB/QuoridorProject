@@ -61,14 +61,27 @@ class Cell {
     let y2 = y1 + this.size;
 
     if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
-      if (clickNumber % 2 === 0) {
+      var distanceX = Math.abs(player1[0].positionX - (x1 + cellSize / 2));
+      var distanceY = Math.abs(player1[0].positionY - (y1 + cellSize / 2));
+      if (
+        (distanceX === cellSize + cellSpacing && distanceY === 0) ||
+        (distanceX === 0 && distanceY === cellSize + cellSpacing)
+      ) {
         player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
-      } else {
-        player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
       }
+      if (mouseX > x1 && mouseX < x2 && mouseY > y1 && mouseY < y2) {
+        var distancesX = Math.abs(player2[0].positionX - (x1 + cellSize / 2));
+        var distancesY = Math.abs(player2[0].positionX - (y1 + cellSize / 2));
+        if (
+          (distancesX === cellSize + cellSpacing && distanceY === 0) ||
+          (distancesX === 0 && distancesY === cellSize + cellSpacing)
+        ) {
+          player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+        }
+      }
+
       clickNumber++;
     }
-
     if (
       mouseX > x1 &&
       mouseX < x2 &&
