@@ -31,6 +31,7 @@ class Reset {
           player2[0].positionY = 444;
           matrix[i].hasVerticalWall = false;
           matrix[i].hasHorizontalWall = false;
+          currentPlayer = 1;
           player1Input.value("");
           player2Input.value("");
         }

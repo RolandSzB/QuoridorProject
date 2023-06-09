@@ -114,6 +114,12 @@ class Cell {
         this.hasHorizontalWall = true;
         nextCell.hasHorizontalWall = true;
       }
+      clickNumber++;
+      if (currentPlayer === 1) {
+        currentPlayer = 2;
+      } else {
+        currentPlayer = 1;
+      }
     } else if (
       mouseX > x2 &&
       mouseX < x2 + cellSpacing &&
@@ -127,6 +133,12 @@ class Cell {
       if (nextCell) {
         this.hasVerticalWall = true;
         nextCell.hasVerticalWall = true;
+      }
+      clickNumber++;
+      if (currentPlayer === 1) {
+        currentPlayer = 2;
+      } else {
+        currentPlayer = 1;
       }
     }
   }
