@@ -12,6 +12,7 @@ var player1 = [];
 var player2 = [];
 
 const restart = new Reset(10, 60, "red", "Reset");
+const newGame = new Reset(10, 320, "orange", "NewGame");
 
 function clickHandler() {
   restart.onClick();
@@ -35,6 +36,21 @@ function draw() {
   text(`Player 1: ${player1Input.value()} `, 350, 25);
   fill("green");
   text(`Player 2: ${player2Input.value()} `, 350, 500);
+
+  if (player1[0].positionY >= startY + 8 * (cellSize + cellSpacing)) {
+    fill("blue");
+    text(`Player 1 wins!`, 10, 300);
+    newGame.draw();
+    newGame.onClick();
+  }
+
+  // Check if Player 2 reaches the first row
+  if (player2[0].positionY <= startY + cellSize / 2) {
+    fill("green");
+    text(`Player 2 wins!`, 10, 300);
+    newGame.draw();
+    newGame.onClick();
+  }
 }
 
 let player1Input;
