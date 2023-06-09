@@ -20,6 +20,7 @@ function clickHandler() {
   }
 }
 function draw() {
+  clear();
   if (restart) {
     restart.draw();
 

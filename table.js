@@ -53,6 +53,8 @@ class Cell {
         cellSpacing
       );
     }
+
+    displayTurn();
   }
 
   onClick() {
@@ -77,7 +79,6 @@ class Cell {
         player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
         clickNumber++;
         currentPlayer = 2;
-        displayTurn();
       }
     }
     if (
@@ -96,7 +97,6 @@ class Cell {
         player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
         clickNumber++;
         currentPlayer = 1;
-        displayTurn();
       }
     }
 

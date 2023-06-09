@@ -25,7 +25,6 @@ class Reset {
     )
       if (this.#text == "Reset") {
         for (let i = 0; i < matrix.length; i++) {
-          clear();
           player1[0].positionX = 332;
           player1[0].positionY = 60;
           player2[0].positionX = 332;
