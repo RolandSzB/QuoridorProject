@@ -19,6 +19,9 @@ function clickHandler() {
   for (let i = 0; i < matrix.length; i++) {
     matrix[i].onClick();
   }
+  if (player1[0].positionY >= startY + 8 * (cellSize + cellSpacing))
+    newGame.onClick();
+  if (player2[0].positionY <= startY + cellSize / 2) newGame.onClick();
 }
 function draw() {
   clear();
@@ -41,7 +44,6 @@ function draw() {
     fill("blue");
     text(`Player 1 wins!`, 10, 300);
     newGame.draw();
-    newGame.onClick();
   }
 
   // Check if Player 2 reaches the first row
