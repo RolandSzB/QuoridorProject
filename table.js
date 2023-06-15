@@ -28,7 +28,6 @@ class Cell {
     this.color = color;
     this.hasVerticalWall = false;
     this.hasHorizontalWall = false;
-    this.hasPawn = 0;
   }
 
   draw() {
