@@ -75,9 +75,11 @@ class Cell {
         (distanceX === cellSize + cellSpacing && distanceY === 0) ||
         (distanceX === 0 && distanceY === cellSize + cellSpacing)
       ) {
-        player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
-        clickNumber++;
-        currentPlayer = 2;
+        if (!playerAtCell(x1 + cellSize / 2, y1 + cellSize / 2)) {
+          player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+          clickNumber++;
+          currentPlayer = 2;
+        }
       }
     }
     if (
@@ -93,9 +95,11 @@ class Cell {
         (distanceX === cellSize + cellSpacing && distanceY === 0) ||
         (distanceX === 0 && distanceY === cellSize + cellSpacing)
       ) {
-        player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
-        clickNumber++;
-        currentPlayer = 1;
+        if (!playerAtCell(x1 + cellSize / 2, y1 + cellSize / 2)) {
+          player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+          clickNumber++;
+          currentPlayer = 1;
+        }
       }
     }
 
@@ -109,7 +113,7 @@ class Cell {
         (cell) =>
           cell.x === this.x + this.size + cellSpacing && cell.y === this.y
       );
-      if (nextCell) {
+      if (nextCell && !nextCell.hasHorizontalWall) {
         this.hasHorizontalWall = true;
         nextCell.hasHorizontalWall = true;
       }
@@ -129,7 +133,7 @@ class Cell {
         (cell) =>
           cell.x === this.x && cell.y === this.y + this.size + cellSpacing
       );
-      if (nextCell) {
+      if (nextCell && !nextCell.hasVerticalWall) {
         this.hasVerticalWall = true;
         nextCell.hasVerticalWall = true;
       }
@@ -142,6 +146,14 @@ class Cell {
     }
   }
 }
+
+function playerAtCell(x, y) {
+  return (
+    (player1[0].positionX === x && player1[0].positionY === y) ||
+    (player2[0].positionX === x && player2[0].positionY === y)
+  );
+}
+
 function displayTurn() {
   if (currentPlayer === 1) {
     fill("blue");
