@@ -21,10 +21,10 @@ function clickHandler() {
     if (mouseX > 200 && mouseX < 400) {
       if (mouseY > 200 && mouseY < 300) {
         gameMode = "human-human";
-        startGame();
+        startHuman();
       } else if (mouseY > 350 && mouseY < 450) {
         gameMode = "human-computer";
-        startGame();
+        startCPU();
       }
     }
   } else {
@@ -86,7 +86,29 @@ function drawPreGame() {
   text("Human-Computer", 300, 375);
 }
 
-function startGame() {
+function startHuman() {
+  player1Input = createInput();
+  player1Input.position(5, 10);
+  player1Input.input(updatePlayer1Input);
+  player1Input.size(110);
+
+  player2Input = createInput();
+  player2Input.position(5, 35);
+  player2Input.input(updatePlayer2Input);
+  player2Input.size(110);
+
+  player1.push(new Player(player1X, player1Y, 30, "blue"));
+  player2.push(new Player(player2X, player2Y, 30, "green"));
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const cellX = startX + i * (cellSize + cellSpacing);
+      const cellY = startY + j * (cellSize + cellSpacing);
+      matrix.push(new Cell(cellX, cellY, cellSize, "brown"));
+    }
+  }
+}
+function startCPU() {
   player1Input = createInput();
   player1Input.position(5, 10);
   player1Input.input(updatePlayer1Input);
