@@ -51,7 +51,6 @@ function draw() {
     fill("green");
     text(`Player 2 wins!`, 10, 300);
     newGame.draw();
-    newGame.onClick();
   }
 }
 
