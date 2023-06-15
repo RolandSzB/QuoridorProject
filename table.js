@@ -172,9 +172,10 @@ class Cell {
         }
       }
 
-      let randomX = Math.floor(Math.random() * 501) + 100;
-      let randomY = Math.floor(Math.random() * 501) + 100;
-
+      let randomX = player2[0].positionX + Math.floor(Math.random() * 101) - 50;
+      console.log(randomX);
+      let randomY = player2[0].positionY + Math.floor(Math.random() * 101) - 50;
+      console.log(randomY);
       if (
         randomX > x1 &&
         randomX < x2 &&
