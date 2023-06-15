@@ -146,7 +146,97 @@ class Cell {
         }
       }
     } else {
-      //computer logic;
+      let x1 = this.x;
+      let y1 = this.y;
+      let x2 = x1 + this.size;
+      let y2 = y1 + this.size;
+
+      if (
+        mouseX > x1 &&
+        mouseX < x2 &&
+        mouseY > y1 &&
+        mouseY < y2 &&
+        clickNumber % 2 == 0
+      ) {
+        var distanceX = Math.abs(player1[0].positionX - (x1 + cellSize / 2));
+        var distanceY = Math.abs(player1[0].positionY - (y1 + cellSize / 2));
+        if (
+          (distanceX === cellSize + cellSpacing && distanceY === 0) ||
+          (distanceX === 0 && distanceY === cellSize + cellSpacing)
+        ) {
+          if (!playerAtCell(x1 + cellSize / 2, y1 + cellSize / 2)) {
+            player1[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+            clickNumber++;
+            currentPlayer = 2;
+          }
+        }
+      }
+
+      let randomX = Math.floor(Math.random() * 501) + 100;
+      let randomY = Math.floor(Math.random() * 501) + 100;
+
+      if (
+        randomX > x1 &&
+        randomX < x2 &&
+        randomY > y1 &&
+        randomY < y2 &&
+        clickNumber % 2 != 0
+      ) {
+        var distanceX = Math.abs(player2[0].positionX - (x1 + cellSize / 2));
+        var distanceY = Math.abs(player2[0].positionY - (y1 + cellSize / 2));
+        if (
+          (distanceX === cellSize + cellSpacing && distanceY === 0) ||
+          (distanceX === 0 && distanceY === cellSize + cellSpacing)
+        ) {
+          if (!playerAtCell(x1 + cellSize / 2, y1 + cellSize / 2)) {
+            player2[0].move(x1 + cellSize / 2, y1 + cellSize / 2);
+            clickNumber++;
+            currentPlayer = 1;
+          }
+        }
+      }
+
+      if (
+        mouseX > x1 &&
+        mouseX < x2 &&
+        mouseY > y2 &&
+        mouseY < y2 + cellSpacing
+      ) {
+        let nextCell = matrix.find(
+          (cell) =>
+            cell.x === this.x + this.size + cellSpacing && cell.y === this.y
+        );
+        if (nextCell && !nextCell.hasHorizontalWall) {
+          this.hasHorizontalWall = true;
+          nextCell.hasHorizontalWall = true;
+        }
+        clickNumber++;
+        if (currentPlayer === 1) {
+          currentPlayer = 2;
+        } else {
+          currentPlayer = 1;
+        }
+      } else if (
+        randomX > x2 &&
+        randomX < x2 + cellSpacing &&
+        randomY > y1 &&
+        randomY < y2
+      ) {
+        let nextCell = matrix.find(
+          (cell) =>
+            cell.x === this.x && cell.y === this.y + this.size + cellSpacing
+        );
+        if (nextCell && !nextCell.hasVerticalWall) {
+          this.hasVerticalWall = true;
+          nextCell.hasVerticalWall = true;
+        }
+        clickNumber++;
+        if (currentPlayer === 1) {
+          currentPlayer = 2;
+        } else {
+          currentPlayer = 1;
+        }
+      }
     }
   }
 }
