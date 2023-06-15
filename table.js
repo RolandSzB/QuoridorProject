@@ -157,9 +157,9 @@ function playerAtCell(x, y) {
 function displayTurn() {
   if (currentPlayer === 1) {
     fill("blue");
-    text("Player 1's Turn", 10, 250);
+    text("Player 1's Turn", 60, 250);
   } else {
     fill("green");
-    text("Player 2's Turn", 10, 250);
+    text("Player 2's Turn", 60, 250);
   }
 }

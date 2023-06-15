@@ -14,7 +14,7 @@ class Reset {
     rect(this.#x, this.#y, 80, 30);
     textSize(16);
     fill("black");
-    text(this.#text, this.#x + 7, this.#y + 20);
+    text(this.#text, this.#x + 38, this.#y + 18);
   }
   onClick() {
     if (
@@ -23,7 +23,7 @@ class Reset {
       mouseY > this.#y &&
       mouseY < this.#y + 30
     )
-      if (this.#text == "Reset" || this.#text == "NewGame") {
+      if (this.#text == "Reset") {
         for (let i = 0; i < matrix.length; i++) {
           player1[0].positionX = 332;
           player1[0].positionY = 60;
@@ -37,5 +37,9 @@ class Reset {
           player2Input.value("");
         }
       }
+    if (this.#text == "NewGame") {
+      let gameMode = "";
+      drawPreGame();
+    }
   }
 }
