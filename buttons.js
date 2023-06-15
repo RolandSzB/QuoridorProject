@@ -23,8 +23,10 @@ class Reset {
       mouseY > this.#y &&
       mouseY < this.#y + 30
     )
-      if (this.#text == "Reset") {
+      if (this.#text == "Reset" || this.#text == "NewGame") {
         for (let i = 0; i < matrix.length; i++) {
+          gameMode = "";
+          drawPreGame();
           player1[0].positionX = 332;
           player1[0].positionY = 60;
           player2[0].positionX = 332;
@@ -37,9 +39,5 @@ class Reset {
           player2Input.value("");
         }
       }
-    if (this.#text == "NewGame") {
-      let gameMode = "";
-      drawPreGame();
-    }
   }
 }
