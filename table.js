@@ -172,9 +172,9 @@ class Cell {
         }
       }
 
-      let randomX = player2[0].positionX + Math.floor(Math.random() * 101) - 50;
+      let randomX = player2[0].positionX - Math.floor(Math.random() * 51);
       console.log(randomX);
-      let randomY = player2[0].positionY + Math.floor(Math.random() * 101) - 50;
+      let randomY = player2[0].positionY - Math.floor(Math.random() * 51);
       console.log(randomY);
       if (
         randomX > x1 &&
@@ -250,11 +250,19 @@ function playerAtCell(x, y) {
 }
 
 function displayTurn() {
-  if (currentPlayer === 1) {
+  if (gameMode == "human-human") {
+    if (currentPlayer === 1) {
+      fill("blue");
+      text("Player 1's Turn", 60, 250);
+    } else {
+      fill("green");
+      text("Player 2's Turn", 60, 250);
+    }
+  } else if (currentPlayer === 1) {
     fill("blue");
     text("Player 1's Turn", 60, 250);
   } else {
     fill("green");
-    text("Player 2's Turn", 60, 250);
+    text("Computer's Turn", 60, 250);
   }
 }
