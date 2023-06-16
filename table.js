@@ -174,7 +174,7 @@ class Cell {
 
       let randomX = player2[0].positionX - Math.floor(Math.random() * 51);
       console.log(randomX);
-      let randomY = player2[0].positionY - Math.floor(Math.random() * 51);
+      let randomY = player2[0].positionY - Math.floor(Math.random() * 51) + 51;
       console.log(randomY);
       if (
         randomX > x1 &&
