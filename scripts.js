@@ -18,14 +18,12 @@ var gameMode = "";
 
 function clickHandler() {
   if (gameMode === "") {
-    if (mouseX > 200 && mouseX < 400) {
-      if (mouseY > 200 && mouseY < 300) {
-        gameMode = "human-human";
-        startHuman();
-      } else if (mouseY > 350 && mouseY < 450) {
-        gameMode = "human-computer";
-        startCPU();
-      }
+    if (mouseY > 200 && mouseY < 300) {
+      gameMode = "human-human";
+      startHuman();
+    } else if (mouseY > 350 && mouseY < 450) {
+      gameMode = "human-computer";
+      startCPU();
     }
   } else {
     restart.onClick();
@@ -114,7 +112,7 @@ function startCPU() {
   player1Input.input(updatePlayer1Input);
   player1Input.size(110);
 
-  player2Input = createInput();
+  player2Input = createInput("Computer Dumb");
   player2Input.position(5, 35);
   player2Input.input(updatePlayer2Input);
   player2Input.size(110);
